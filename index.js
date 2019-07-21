@@ -1,14 +1,33 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const app = express();
 
-const bodyParser = require('body-parser');
+mongoose.connect('mongodb://localhost/yelp_camp', { useNewUrlParser: true });
 
-const campgrounds = [
-  { name: 'Lori', image: 'https://www.reserveamerica.com/webphotos/racms/articles/images/bca19684-d902-422d-8de2-f083e77b50ff_image2_GettyImages-677064730.jpg' },
-  { name: 'Gala', image: 'https://www.michigan.org/sites/default/files/styles/15_6_desktop/public/camping-hero_0_0.jpg?itok=mgGs0-vw&timestamp=1520373602' },
-  { name: 'Ashito', image: 'https://www.newzealand.com/assets/Tourism-NZ/Nelson/ba40378fe9/img-1536928144-4748-13836-F53C3949-ED9E-E0DC-CF6EC0D789D9308A__FocalPointCropWzI0MCw0ODAsNTAsNTAsNzUsImpwZyIsNjUsMi41XQ.jpg' },
-];
+// Schema setup
+const campgroundSchema = new mongoose.Schema({
+  name: String,
+  image: String,
+  desc: String,
+});
+const Campground = mongoose.model('Campground', campgroundSchema);
+
+// Campground.create(
+//   {
+//     name: 'Lori',
+//     image: 'https://rebrand.ly/4c117',
+//   },
+//   (err, campground) => {
+//     if (err) {
+//       console.log(`Error: ${err}`);
+//     } else {
+//       console.log('New Campground Created!');
+//       console.log(campground);
+//     }
+//   },
+// );
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -19,20 +38,45 @@ app.get('/', (req, res) => {
 });
 
 app.get('/campgrounds', (req, res) => {
-  res.render('campgrounds', { campgrounds });
+  // Get all campgrounds from DB
+  Campground.find({}, (err, campgrounds) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render('index', { campgrounds });
+    }
+  });
 });
 
 app.post('/campgrounds', (req, res) => {
   // get data from form and add to campgrounds array
-  const { name, image } = req.body;
-  const newCampground = { name, image };
-  campgrounds.push(newCampground);
-  // redirect back to campgrounds page
-  res.redirect('/campgrounds');
+  const { name, image, desc } = req.body;
+  const newCampground = { name, image, desc };
+  // Create a new campground and save to database
+  Campground.create(newCampground, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      // redirect back to campgrounds page
+      res.redirect('/campgrounds');
+    }
+  });
 });
 
 app.get('/campgrounds/new', (req, res) => {
   res.render('new');
+});
+
+app.get('/campgrounds/:id', (req, res) => {
+  // Find the campground with provided ID
+  Campground.findById(req.params.id, (err, campground) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render('show', { campground });
+    }
+  });
+  // Show detailed information about that campground
 });
 
 app.listen(3000, () => {
