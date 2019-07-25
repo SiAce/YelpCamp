@@ -1,4 +1,4 @@
-<% include partials/header %>
+<% include ../partials/header %>
 
 <div class="container">
 
@@ -17,7 +17,7 @@
             <img src="<%= campground.image %>" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title"><%= campground.name %></h5>
-              <p class="card-text"><%= campground.desc %></p>
+              <p class="card-text"><%= campground.description %></p>
               <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
             </div>
           </div>
@@ -27,4 +27,4 @@
 
 </div>
 
-<% include partials/footer %>
+<% include ../partials/footer %>
