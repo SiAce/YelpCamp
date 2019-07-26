@@ -9,19 +9,19 @@
     <p>You can also contribute to this open-source project!</p>
     <a class="btn btn-primary btn-lg" href="/campgrounds/new" role="button">Add New Campground</a>
   </div>
-  
+
   <div class="row">
     <% campgrounds.forEach( (campground) => { %>
-      <div class="col">
-        <div class="card my-2" style="width: 18rem;">
-            <img src="<%= campground.image %>" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title"><%= campground.name %></h5>
-              <p class="card-text"><%= campground.description %></p>
-              <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
-            </div>
-          </div>
+    <div class="col">
+      <div class="card my-2" style="width: 18rem;">
+        <img src="<%= campground.image %>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= campground.name %></h5>
+          <p class="card-text"><%= campground.description.substring(0, 100) %>...</p>
+          <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+        </div>
       </div>
+    </div>
     <% }); %>
   </div>
 
