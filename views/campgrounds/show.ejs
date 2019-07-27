@@ -16,6 +16,7 @@
         <div class="card-body">
           <h4 class="card-title"><%= campground.name %></h4>
           <p class="card-text"><%= campground.description %></p>
+          <footer class="blockquote-footer">Submitted By <%= campground.author.username %> </footer>
           <h5 class="card-text text-danger text-right text-large">$9.00/night</h5>
         </div>
       </div>
@@ -37,8 +38,8 @@
 
           <p class="card-text"><% campground.comments.forEach((comment) => { %>
             <hr>
-            <p><b><%= comment.author %></b>:</p>
-            <p><%= comment.text %> <span class="float-right" >19 days ago</span></p>
+            <p><b><%= comment.author.username %></b>:</p>
+            <p><%= comment.text %> <span class="float-right">19 days ago</span></p>
             <% }); %>
           </p>
         </div>
@@ -46,11 +47,5 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
 
 <% include ../partials/footer %>
