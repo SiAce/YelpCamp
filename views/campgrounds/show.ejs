@@ -18,6 +18,12 @@
           <p class="card-text"><%= campground.description %></p>
           <footer class="blockquote-footer">Submitted By <%= campground.author.username %> </footer>
           <h5 class="card-text text-danger text-right text-large">$9.00/night</h5>
+          <% if( user && campground.author.id.equals(user._id)){ %>
+            <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-success">Edit</a>
+            <form id="delete-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+              <button class="btn btn-danger">Delete</button>
+            </form>
+          <% } %>
         </div>
       </div>
       <div class="card my-4">
@@ -36,10 +42,20 @@
             </div>
           </div>
 
-          <p class="card-text"><% campground.comments.forEach((comment) => { %>
-            <hr>
-            <p><b><%= comment.author.username %></b>:</p>
-            <p><%= comment.text %> <span class="float-right">19 days ago</span></p>
+          <p class="card-text">
+            <% campground.comments.forEach((comment) => { %>
+              <hr>
+              <p><b><%= comment.author.username %></b>:</p>
+              <p><%= comment.text %> <span class="float-right">19 days ago</span></p>
+              <% if( user && comment.author.id.equals(user._id)){ %>
+                <a href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit"
+                  class="btn btn-sm btn-success">
+                  Edit
+                </a>
+                <form id="delete-comment-form" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                  <button class="btn btn-sm btn-danger">Delete</button>
+                </form>
+              <% } %>
             <% }); %>
           </p>
         </div>

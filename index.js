@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+const methodOverride = require('method-override');
 const User = require('./models/user');
 // const seedDB = require('./seeds');
 
@@ -17,6 +18,7 @@ mongoose.connect('mongodb://localhost/yelp_camp', { useNewUrlParser: true });
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 
 // Passport configuration

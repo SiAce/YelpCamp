@@ -1,3 +1,15 @@
 body {
     padding-top: 70px;
 }
+
+nav img {
+    height: 2em;
+}
+
+.jumbotron > h1 > img {
+    height: 1em;
+}
+
+#delete-form, #delete-comment-form {
+    display: inline;
+}
