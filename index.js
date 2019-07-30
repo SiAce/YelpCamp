@@ -14,7 +14,12 @@ const indexRoutes = require('./routes/index');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://siacespark:bYnxagWvQyi5x57@cluster0-gilx8.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://siacespark:bYnxagWvQyi5x57@cluster0-gilx8.mongodb.net/test?retryWrites=true&w=majority',
+  {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+  });
+
 // seedDB();
 
 app.use(bodyParser.urlencoded({ extended: true }));
