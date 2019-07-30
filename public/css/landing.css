@@ -29,22 +29,22 @@ body {
 }
 
 .slideshow li:nth-child(1) { 
-    background-image: url(../img/camp1.jpg)
+    background-image: url(https://cdn.pixabay.com/photo/2016/02/18/22/16/tent-1208201_1280.jpg)
 }
 .slideshow li:nth-child(2) { 
-    background-image: url(../img/camp2.jpg);
+    background-image: url(https://cdn.pixabay.com/photo/2016/01/19/16/48/teepee-1149402_1280.jpg);
     animation-delay: 10s; 
 }
 .slideshow li:nth-child(3) { 
-    background-image: url(../img/camp3.jpg);
+    background-image: url(https://cdn.pixabay.com/photo/2016/11/21/15/14/camping-1845906_1280.jpg);
     animation-delay: 20s; 
 }
 .slideshow li:nth-child(4) { 
-    background-image: url(../img/camp4.jpg);
+    background-image: url(https://cdn.pixabay.com/photo/2015/03/26/10/29/camping-691424_1280.jpg);
     animation-delay: 30s; 
 }
 .slideshow li:nth-child(5) { 
-    background-image: url(../img/camp5.jpg);
+    background-image: url(https://cdn.pixabay.com/photo/2014/11/27/18/36/tent-548022_1280.jpg);
     animation-delay: 40s; 
 }
 

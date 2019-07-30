@@ -14,7 +14,7 @@ const indexRoutes = require('./routes/index');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://siacespark:bYnxagWvQyi5x57@cluster0-gilx8.mongodb.net/test?retryWrites=true&w=majority',
+mongoose.connect(process.env.DATABASEURL,
   {
     useNewUrlParser: true,
     useCreateIndex: true,
