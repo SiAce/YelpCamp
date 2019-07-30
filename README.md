@@ -3,7 +3,7 @@
 
 A very basic full stack website intended for sharing campgrounds.
 
-Deployed at (Heroku)[https://polar-fjord-16894.herokuapp.com/]
+Deployed at [Heroku](https://polar-fjord-16894.herokuapp.com/)
 
 ### Programming Languages
 
