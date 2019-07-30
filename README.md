@@ -5,39 +5,39 @@ A very basic full stack website intended for sharing campgrounds.
 
 Deployed at (Heroku)[https://polar-fjord-16894.herokuapp.com/]
 
-## Programming Languages
+### Programming Languages
 
 - HTML
 - CSS
 - Javascript
 - EJS
 
-## CSS Framework
+### CSS Framework
 
 - Bootstrap (4)
 
-## Run-Time Environment
+### Run-Time Environment
 
 - Node.js
 
-## Package Manager
+### Package Manager
 
 - npm
 
-## Web Application Framework
+### Web Application Framework
 
 - Express.js
 
-## Database
+### Database
 
 - MongoDB
 - Mongoose
 
-# Authentication
+### Authentication
 
 - Passport.js
 
-## Dependencies
+### Dependencies
 
 - "body-parser": "^1.19.0",
 - "connect-flash": "^0.1.1",
